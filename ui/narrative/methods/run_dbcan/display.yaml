@@ -1,0 +1,27 @@
+#
+# define display information
+#
+name: Annotate Genome With CAZy annotation 
+
+tooltip: |
+   Annotate Genome with CAZy annotation in KBase 
+
+screenshots: []
+
+icon: icon.png
+
+#
+# Configure the display and description of parameters
+#
+parameters :
+    genome_id :
+        ui-name : |
+            genome_id
+        short-hint : |
+            Genome id 
+        long-hint  : |
+            Workspace id of Genome to be annotated
+
+description : |
+    <p> This is an implementation of DBCAN in KBase </p>
+

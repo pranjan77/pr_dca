@@ -90,8 +90,21 @@ class pr_dca:
         # add additional info to provenance here, in this case the input data object reference
         provenance[0]['input_ws_objects']=[workspace_name+'/'+genome_id]
 
-        report =  'This is working\n'
+        report =  '<b>This is working</b>'
         report += 'This is step2\n'
+
+        report = '''\
+The output of Hmmscan are provide below. There are six domain types, as listed below.
+Each type represents one group of enzymes for biosynthesis or degradatin of complex carbohydrate.
+	Glycoside Hydrolases (GHs) 	 		: 	hydrolysis and/or rearrangement of glycosidic bonds
+	GlycosylTransferases (GTs) 	 		: 	formation of glycosidic bonds
+	Polysaccharide Lyases (PLs)  		: 	non-hydrolytic cleavage of glycosidic bonds
+	Carbohydrate Esterases (CEs) 		: 	hydrolysis of carbohydrate esters
+	Auxiliary Activities (AAs) 	 		:	redox enzymes that act in conjunction with CAZymes
+	Carbohydrate-Binding Modules (CBMs) : 	adhesion to carbohydrates
+Details about them can be found at CAZy website (www.cazy.org).\
+'''
+
 
         reportObj = {
             'objects_created':[],

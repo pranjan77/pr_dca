@@ -68,12 +68,12 @@ class pr_dca:
         genome_id = params['genome_id']
 
         token = ctx['token']
-        wsClient = workspaceService(self.workspaceURL, token=token) 
+        ws_client = workspaceService(self.workspaceURL, token=token) 
         try: 
             # Note that results from the workspace are returned in a list, and the actual data is saved
             # in the 'data' key.  So to get the ContigSet data, we get the first element of the list, and
             # look at the 'data' field.
-            Genome = wsClient.get_objects([{'ref': workspace_name+'/'+genome_id}])[0]['data']
+            Genome = ws_client.get_objects([{'ref': workspace_name+'/'+genome_id}])[0]['data']
         except:
             exc_type, exc_value, exc_traceback = sys.exc_info()
             lines = traceback.format_exception(exc_type, exc_value, exc_traceback)
@@ -100,7 +100,7 @@ class pr_dca:
 
         reportName = 'run_dbcan_'+str(hex(uuid.getnode()))
         report_info = ws_client.save_objects({
-            'id':info[6],
+            'workspace':workspace_name,
             'objects':[
                  {
                   'type':'KBaseReport.Report',

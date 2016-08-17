@@ -57,6 +57,7 @@ class pr_dca:
         # return variables are: returnVal
         #BEGIN run_dbcan
         print('Starting Annotation with DBCan')
+        params = DBCanParams
 
         #Step1: Get Genome data
         if 'workspace' not in params:

@@ -3,6 +3,7 @@
 
 import sys
 import traceback
+import subprocess
 import uuid
 from pprint import pprint, pformat
 from biokbase.workspace.client import Workspace as workspaceService
@@ -40,6 +41,8 @@ class pr_dca:
     def __init__(self, config):
         #BEGIN_CONSTRUCTOR
         self.workspaceURL = config['workspace-url']
+        if 'scratch' in config:
+           self.__SCRATCH = config['scratch']
         #END_CONSTRUCTOR
         pass
     
@@ -81,9 +84,38 @@ class pr_dca:
             raise ValueError('Error loading original Genome object from workspace:\n' + orig_error)
         
         print('Got Genome data.')
-        
+
+        f1=open('/kb/module/work/input.fasta', 'w+')
         #Step2: Parse Genome to get protein fasta files
+        Genome_features =  Genome['features']
+        protein_data = ""
+        for feature in Genome_features:
+                if feature['type'] == 'CDS':
+                            if feature.has_key('protein_translation'):
+                                            protein_data += ">" + feature['id'] + "\n" + feature['protein_translation'] + "\n"
+        f1.write(protein_data)
  
+        print('wrote Protein fasta file')
+
+
+        ropts = ["/kb/module/dbcan/dbCAN.sh", "/kb/module/dbcan"]
+
+        ropts.append("/kb/module/work/input.fasta")
+        ropts.append("/kb/module/work/output.result.txt")
+
+        # Make call to execute the system.
+        roptstr = " ".join(str(x) for x in ropts)
+        openedprocess = subprocess.Popen(roptstr, shell=True, stdout=subprocess.PIPE)
+        openedprocess.wait()
+       #Make sure the openedprocess.returncode is zero (0)
+        if openedprocess.returncode != 0:
+#        logger.info(" did not return normally, return code - "
+#            + str(openedprocess.returncode))
+          return False
+
+
+
+#        /kb/module/dbcan/dbCAN.sh /kb/module/dbcan /kb/module/work/input.fasta /kb/module/work/myres.txt
         provenance = [{}]
         if 'provenance' in ctx:
             provenance = ctx['provenance']
@@ -104,6 +136,13 @@ Each type represents one group of enzymes for biosynthesis or degradatin of comp
 	Carbohydrate-Binding Modules (CBMs) : 	adhesion to carbohydrates
 Details about them can be found at CAZy website (www.cazy.org).\
 '''
+
+#Read the result file and add to report
+        with open("/kb/module/work/output.result.txt") as f:
+         for line in f:
+           report += line
+        f.close()
+
 
 
         reportObj = {

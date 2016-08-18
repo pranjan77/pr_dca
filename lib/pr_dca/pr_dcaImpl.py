@@ -109,9 +109,10 @@ class pr_dca:
         openedprocess.wait()
        #Make sure the openedprocess.returncode is zero (0)
         if openedprocess.returncode != 0:
+         print "some error" + str(openproecess.returncode)
 #        logger.info(" did not return normally, return code - "
 #            + str(openedprocess.returncode))
-          return False
+         return False
 
 
 
@@ -138,12 +139,13 @@ Details about them can be found at CAZy website (www.cazy.org).\
 '''
 
 #Read the result file and add to report
+        datp = ""
         with open("/kb/module/work/output.result.txt") as f:
          for line in f:
-           report += line
+           datp += line
         f.close()
 
-        print report
+        print datp
 
         reportObj = {
             'objects_created':[],

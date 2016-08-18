@@ -143,7 +143,7 @@ Details about them can be found at CAZy website (www.cazy.org).\
            report += line
         f.close()
 
-
+        print report
 
         reportObj = {
             'objects_created':[],

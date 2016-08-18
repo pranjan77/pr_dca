@@ -123,9 +123,6 @@ class pr_dca:
         # add additional info to provenance here, in this case the input data object reference
         provenance[0]['input_ws_objects']=[workspace_name+'/'+genome_id]
 
-        report =  '<b>This is working</b>'
-        report += 'This is step2\n'
-
         report = '''\
 The output of Hmmscan are provide below. There are six domain types, as listed below.
 Each type represents one group of enzymes for biosynthesis or degradatin of complex carbohydrate.
@@ -135,18 +132,14 @@ Each type represents one group of enzymes for biosynthesis or degradatin of comp
 	Carbohydrate Esterases (CEs) 		: 	hydrolysis of carbohydrate esters
 	Auxiliary Activities (AAs) 	 		:	redox enzymes that act in conjunction with CAZymes
 	Carbohydrate-Binding Modules (CBMs) : 	adhesion to carbohydrates
-Details about them can be found at CAZy website (www.cazy.org).\
+Details about them can be found at CAZy website (www.cazy.org)..\
 '''
 
 #Read the result file and add to report
-        datp = ""
         with open("/kb/module/work/output.result.txt") as f:
          for line in f:
-           datp += line
-        f.close()
-
-        print datp
-
+           report += line
+        print report
         reportObj = {
             'objects_created':[],
             'text_message':report

@@ -98,7 +98,7 @@ class pr_dca:
         print('wrote Protein fasta file')
 
 
-        ropts = ["/kb/module/dbcan/dbCAN.sh", "/kb/module/dbcan"]
+        ropts = ["sh /kb/module/dbcan/dbCAN.sh", "/kb/module/dbcan"]
 
         ropts.append("/kb/module/work/input.fasta")
         ropts.append("/kb/module/work/output.result.txt")
@@ -114,7 +114,7 @@ class pr_dca:
 #            + str(openedprocess.returncode))
          return False
 
-
+         print roptstr
 
 #        /kb/module/dbcan/dbCAN.sh /kb/module/dbcan /kb/module/work/input.fasta /kb/module/work/myres.txt
         provenance = [{}]

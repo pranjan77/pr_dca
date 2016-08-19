@@ -6,6 +6,11 @@ outputfilepath=$3
 cd $currentpath;
 databasepath="$currentpath/hmmmodel";
 
+echo $currentpath
+echo $fastafilepath
+echo $outputfilepath
+pwd
+which hmmscan
 
 
 

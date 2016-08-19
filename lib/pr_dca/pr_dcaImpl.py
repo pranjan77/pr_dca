@@ -87,7 +87,7 @@ class pr_dca:
             raise ValueError('Error loading original Genome object from workspace:\n' + orig_error)
         
         print('Got Genome data.')
-        print Genome
+#        print Genome
         f1=open('/kb/module/work/input.fasta', 'w+')
         #Step2: Parse Genome to get protein fasta files
         Genome_features =  Genome['features']
@@ -96,7 +96,7 @@ class pr_dca:
                 if feature['type'] == 'CDS':
                             if feature.has_key('protein_translation'):
                                             protein_data += ">" + feature['id'] + "\n" + feature['protein_translation'] + "\n"
-        print protein_data
+#        print protein_data
         f1.write(protein_data)
  
         print('wrote Protein fasta file')
@@ -150,7 +150,7 @@ Each type represents one group of enzymes for biosynthesis or degradatin of comp
 	Carbohydrate Esterases (CEs) 		: 	hydrolysis of carbohydrate esters
 	Auxiliary Activities (AAs) 	 		:	redox enzymes that act in conjunction with CAZymes
 	Carbohydrate-Binding Modules (CBMs) : 	adhesion to carbohydrates
-Details about them can be found at CAZy website (www.cazy.org)..\
+Details about them can be found at CAZy website (www.cazy.org)..
 '''
 
 #Read the result file and add to report

@@ -155,12 +155,11 @@ Each type represents one group of enzymes for biosynthesis or degradatin of comp
 Details about them can be found at CAZy website (www.cazy.org)..
 
 '''
-report += "Query\tDomain\te-value\tstartQuery\tendQuery\tstartDomain\tendDomain\tCoveredFraction\n";
+        report += "Query\tDomain\te-value\tstartQuery\tendQuery\tstartDomain\tendDomain\tCoveredFraction\n";
 #Read the result file and add to report
         with open("/kb/module/work/output.result.txt") as f:
          for line in f:
            report += line
-        print report
         reportObj = {
             'objects_created':[],
             'text_message':report

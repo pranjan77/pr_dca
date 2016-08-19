@@ -40,24 +40,25 @@ perl ./hmm.pl "$workpath/$foldName/family/output.txt"  "$workpath/$foldName/fami
 sh ./rank.sh "$workpath/$foldName/family/output2.txt" 1> "$workpath/$foldName/family/result.txt" 2> "$workpath/$foldName/family/result.err";
 
 
-echo $fastafilepath
-
-echo "ppppppppppppppppppppppp"
-
-cat $fastafilepath
-
-cat /kb/module/dbcan/workspace/random/family/output.err
-
-echo "input.faa"
-
-cat /kb/module/dbcan/workspace/random/input.faa
-
 cp "$workpath/$foldName/family/result.txt" $outputfilepath
 
-du -a $workpath
+#echo $fastafilepath
 
-echo "starting cat\n"
-cat $workpath/$foldName/family/*
+#echo "ppppppppppppppppppppppp"
+
+#cat $fastafilepath
+
+#cat /kb/module/dbcan/workspace/random/family/output.err
+
+#echo "input.faa"
+
+#cat /kb/module/dbcan/workspace/random/input.faa
+
+
+#du -a $workpath
+
+#echo "starting cat\n"
+#cat $workpath/$foldName/family/*
 
 # subfamily prediction;
 #hmmscan -o "$workpath/$foldName/subfamily/output.txt" "$databasepath/cazy-subfamily/all.subfam.hmm" "$workpath/$foldName/input.faa" 2> "$workpath/$foldName/subfamily/output.err";

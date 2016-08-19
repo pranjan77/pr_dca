@@ -40,9 +40,8 @@ perl ./hmm.pl "$workpath/$foldName/family/output.txt"  "$workpath/$foldName/fami
 sh ./rank.sh "$workpath/$foldName/family/output2.txt" 1> "$workpath/$foldName/family/result.txt" 2> "$workpath/$foldName/family/result.err";
 
 cp "$workpath/$foldName/family/result.txt" $outputfilepath
-du -ah $currentpath 
 
-cat $currentpath/$foldname/*
+cat $currentpath/$foldname/family/*
 
 
 # subfamily prediction;

@@ -41,6 +41,8 @@ sh ./rank.sh "$workpath/$foldName/family/output2.txt" 1> "$workpath/$foldName/fa
 
 cp "$workpath/$foldName/family/result.txt" $outputfilepath
 
+echo $outputfilepath
+cat $outputfilepath
 
 # subfamily prediction;
 #hmmscan -o "$workpath/$foldName/subfamily/output.txt" "$databasepath/cazy-subfamily/all.subfam.hmm" "$workpath/$foldName/input.faa" 2> "$workpath/$foldName/subfamily/output.err";

@@ -21,7 +21,7 @@ continue;
 else
 workpath="$currentpath/workspace";
 cd $workpath;
-foldName=$(date '+%Y%m%d%H%M%S');
+foldName="random";
 
 mkdir $foldName; 
 cd $foldName

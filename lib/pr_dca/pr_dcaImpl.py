@@ -98,7 +98,7 @@ class pr_dca:
                                             protein_data += ">" + feature['id'] + "\n" + feature['protein_translation'] + "\n"
 #        print protein_data
         f1.write(protein_data)
- 
+        f1.close() 
         print('wrote Protein fasta file')
 
 

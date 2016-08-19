@@ -48,7 +48,7 @@ cp "$workpath/$foldName/family/result.txt" $outputfilepath
 
 #cat $fastafilepath
 
-#cat /kb/module/dbcan/workspace/random/family/output.err
+cat /kb/module/dbcan/workspace/random/family/output.err
 
 #echo "input.faa"
 

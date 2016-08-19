@@ -31,7 +31,7 @@ mkdir subfamily;
 cd $workpath;
 chmod -R 777 $foldName;
 
-cp $fastafilepath "./$foldName/input.faa";
+cp $fastafilepath "$workpath/$foldName/input.faa";
 cd ..;
 
 # family prediction;
@@ -40,7 +40,15 @@ perl ./hmm.pl "$workpath/$foldName/family/output.txt"  "$workpath/$foldName/fami
 sh ./rank.sh "$workpath/$foldName/family/output2.txt" 1> "$workpath/$foldName/family/result.txt" 2> "$workpath/$foldName/family/result.err";
 
 
+echo $fastafilepath
+
+echo "ppppppppppppppppppppppp"
+
+cat $fastafilepath
+
 cat /kb/module/dbcan/workspace/random/family/output.err
+
+echo "input.faa"
 
 cat /kb/module/dbcan/workspace/random/input.faa
 

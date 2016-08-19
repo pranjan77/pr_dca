@@ -33,7 +33,10 @@ class pr_dca:
     #BEGIN_CLASS_HEADER
 
     workspaceURL = None
-
+    def print_lines(self, lines):
+      for line in lines:
+        if len(line) > 0:
+          print("|" + line)
     #END_CLASS_HEADER
 
     # config contains contents of config file in a hash or None if it couldn't
@@ -42,7 +45,7 @@ class pr_dca:
         #BEGIN_CONSTRUCTOR
         self.workspaceURL = config['workspace-url']
         if 'scratch' in config:
-           self.__SCRATCH = config['scratch']
+           self.scratch = config['scratch']
         #END_CONSTRUCTOR
         pass
     
@@ -105,16 +108,30 @@ class pr_dca:
 
         # Make call to execute the system.
         roptstr = " ".join(str(x) for x in ropts)
-        openedprocess = subprocess.Popen(roptstr, shell=True, stdout=subprocess.PIPE)
-        openedprocess.wait()
+
+        openedprocess = subprocess.Popen(roptstr, shell=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+        process_out = openedprocess.communicate()
+        output = process_out[0]
+        if output is not None and len(output) > 0:
+            print("Output:")
+            self.print_lines(output.split("\n"))
+        errors = process_out[1]
+        if errors is not None and len(errors) > 0:
+            print("Errors:")
+            self.print_lines(errors.split("\n"))
+        #openedprocess = subprocess.Popen(roptstr, shell=True, stdout=subprocess.PIPE)
+        #openedprocess.wait()
        #Make sure the openedprocess.returncode is zero (0)
-        if openedprocess.returncode != 0:
-         print "some error" + str(openproecess.returncode)
+        #if openedprocess.returncode != 0:
+ #        print "some error" + str(openproecess.returncode)
 #        logger.info(" did not return normally, return code - "
 #            + str(openedprocess.returncode))
-         return False
+         #return False
 
-         print roptstr
+
+        #subprocess.Popen(roptstr, cwd=self.scratch, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+
+        # print roptstr
 
 #        /kb/module/dbcan/dbCAN.sh /kb/module/dbcan /kb/module/work/input.fasta /kb/module/work/myres.txt
         provenance = [{}]

@@ -87,7 +87,7 @@ class pr_dca:
             raise ValueError('Error loading original Genome object from workspace:\n' + orig_error)
         
         print('Got Genome data.')
-
+        print Genome
         f1=open('/kb/module/work/input.fasta', 'w+')
         #Step2: Parse Genome to get protein fasta files
         Genome_features =  Genome['features']

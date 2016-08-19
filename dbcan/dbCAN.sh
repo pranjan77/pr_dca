@@ -41,7 +41,7 @@ sh ./rank.sh "$workpath/$foldName/family/output2.txt" 1> "$workpath/$foldName/fa
 
 cp "$workpath/$foldName/family/result.txt" $outputfilepath
 
-cat $currentpath/$foldName/family/*
+cat $workpath/$foldName/family/*
 
 
 # subfamily prediction;

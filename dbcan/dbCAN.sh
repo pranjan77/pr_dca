@@ -39,6 +39,11 @@ hmmscan -o "$workpath/$foldName/family/output.txt" "$databasepath/cazy-family/al
 perl ./hmm.pl "$workpath/$foldName/family/output.txt"  "$workpath/$foldName/family/output2.txt" 2> "$workpath/$foldName/family/output2.err";
 sh ./rank.sh "$workpath/$foldName/family/output2.txt" 1> "$workpath/$foldName/family/result.txt" 2> "$workpath/$foldName/family/result.err";
 
+
+cat /kb/module/dbcan/workspace/random/family/output.err
+
+cat /kb/module/dbcan/workspace/random/input.faa
+
 cp "$workpath/$foldName/family/result.txt" $outputfilepath
 
 du -a $workpath

@@ -96,6 +96,7 @@ class pr_dca:
                 if feature['type'] == 'CDS':
                             if feature.has_key('protein_translation'):
                                             protein_data += ">" + feature['id'] + "\n" + feature['protein_translation'] + "\n"
+        print protein_data
         f1.write(protein_data)
  
         print('wrote Protein fasta file')
